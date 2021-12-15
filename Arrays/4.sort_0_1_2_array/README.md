@@ -1,5 +1,5 @@
 # NOTES
-## Sort an Array of 0z, 1s, and 2s
+## Sort an Array of 0s, 1s, and 2s
 
 ### Method-1
 1. Sort the array using any sorting algorithm
