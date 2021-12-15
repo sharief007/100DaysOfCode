@@ -3,7 +3,7 @@ import java.util.PriorityQueue;
 
 public class Solution {
     public static void main(String[] args) {
-        int[] arr = {11,22,33,44,55,66,77,88,99};
+        int[] arr = {34,64,23,98,12,56,25};
         int l = largest(arr,4);
         int s = smallest(arr,4);
         System.out.println(String.format("%sth largest =%s\n%sth smallest =%s", 5,l,5,s));
