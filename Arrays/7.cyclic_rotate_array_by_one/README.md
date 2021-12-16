@@ -1,5 +1,5 @@
 # NOTES
-## Move all negative elements to one side of the array
+## Cyclically rotate array by 1 step
 
 ### Clock wise cyclic rotation by 1
 ``` java
@@ -28,5 +28,4 @@ Space Complexity: O(1)
 
 
 ### Rotate Array by K steps (Juggling Algorithm)
-![Youtube](https://www.youtube.com/watch?v=utE_1ppU5DY)
-
+[![Youtube](https://i.ytimg.com/vi/utE_1ppU5DY/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDGgRBy9QEZYkc_9jfjNxFIIRxqBw)](https://www.youtube.com/watch?v=utE_1ppU5DY)
