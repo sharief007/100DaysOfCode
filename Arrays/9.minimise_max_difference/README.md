@@ -1,7 +1,7 @@
 # NOTES
 ## Minimise maximum difference between heights
 
-### Kadane's Algorithm
+### Code
 ```java
 static int getMinDiff(int[] arr, int n, int k) {
         Arrays.sort(arr);
