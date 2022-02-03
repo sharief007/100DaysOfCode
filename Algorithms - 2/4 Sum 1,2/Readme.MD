@@ -40,6 +40,7 @@ class Solution {
                 for(int k=j+1;k<n-1;k++) {
                     int rem = target - (nums[i] + nums[j] + nums[k]);
                     System.out.println(String.format("rem=%s,k+1=%s",rem,k+1));
+                    //binarySearch(int[]array, int startIndex(inclusive), int lastIndex(exclusive), int target)
                     int index = Arrays.binarySearch(nums,k+1, n, rem);
                     System.out.println(index);
                     if(index >= 0 ){
