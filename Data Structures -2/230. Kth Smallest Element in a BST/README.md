@@ -4,7 +4,7 @@
 
 Priotrity queue insertion : logN, deletion: logN
 
-- Time Complexity: O(N* logN + K * log N)
+- Time Complexity: O(N* logN + K * log N)  (22ms)
 - Space Complexity: O(N)
 
 ```java
@@ -50,7 +50,7 @@ Utilise the Sorted property of BST. BST is sorted in ascending order from left t
 Use InOrder Traversal (left - root - right) to parse the tree and store in array/list.
 return the element at (K-1)th index.
 
-- Time Complexity: O(N)
+- Time Complexity: O(N) (2ms)
 - Space Complexity: O(1)
 
 ```java
@@ -89,7 +89,7 @@ class Solution {
 
 ### Approach - 3 (Best solution)
 
-- Time complexity: O(logn) (height of tree)
+- Time complexity: O(logn) (height of tree)     (oms)
 - space complexity: O(n) (auxiliary space)
 
 ```text
