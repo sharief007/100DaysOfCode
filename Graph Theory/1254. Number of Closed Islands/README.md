@@ -16,8 +16,8 @@ Islands in gray are closed because they are completely surrounded by water (grou
 ### Approach -1 
 [Youtube Explanation](https://www.youtube.com/watch?v=QcY61aBwibI)
 
-- Time Complexity: O((N*M)^2)
-- Space Complexity: O(N) (Auxiliary stack space)
+- Time Complexity: O(n*m)
+- Space Complexity: O(n*m) (Auxiliary stack space)
 
 Dry run the code to understand the logic.
 
