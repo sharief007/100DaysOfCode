@@ -14,7 +14,7 @@
 
 
 - Time Complexity: O(N+E)
-- Space Complexity: O()
+- Space Complexity: O(N^2)
 
 ```java
 class Solution {
