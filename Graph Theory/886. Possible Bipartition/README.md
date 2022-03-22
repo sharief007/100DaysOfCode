@@ -15,7 +15,9 @@ Explanation: group1 [1,4] and group2 [2,3].
 
 ### Approach (Use graph coloring method)
 
-- Time Complexity: O()
+[Youtube Explanation](https://www.youtube.com/watch?v=0ACfAqs8mm0&t=819s)
+
+- Time Complexity: O(E+V)
 - Space Complexity: O()
 
 ```java
