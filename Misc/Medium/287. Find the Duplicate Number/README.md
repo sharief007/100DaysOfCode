@@ -9,7 +9,20 @@ The elements in array lies between the range 1 to N. Since we know the range, we
 - Space Complexity: O(1)
 
 ```java
-
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int n =nums.length;
+        for(int i=0;i<n;i++) {
+            nums[nums[i]%n] += n;
+        }
+        for(int i=0;i<n;i++) {
+            if(nums[i]>=2*n) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
 ```
 
 
