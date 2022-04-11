@@ -61,3 +61,29 @@ class Solution {
     }
 }
 ```
+------------------- 
+```java
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        if(rowIndex == 0) return List.of(1);
+        if(rowIndex == 1) return List.of(1,1);
+        int num =1, half = rowIndex/2;
+        List<Integer> list = new ArrayList<>();
+        for(int i=0;i<=half;i++) {
+            list.add(num);
+            long temp = num;
+            temp = (temp* (rowIndex -i))/(i +1);
+            num = (int) temp;
+        }
+        if(rowIndex%2 == 0) {
+            half = list.size() - 1;
+        } else {
+            half = list.size();
+        }
+        for(int i=half-1;i>=0;i--) {
+            list.add(list.get(i));
+        }
+        return list;
+    }
+}
+```
