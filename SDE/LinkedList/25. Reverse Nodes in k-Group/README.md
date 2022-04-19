@@ -111,51 +111,100 @@ class Solution {
 
 ### Approach - 3 (Optimal)
 
+1. We need to break the linkedlist into multiple parts, each of size k. Each part will contain k nodes.
+2. Take one ptr temp pointing to head
+3. check whether there exists k nodes further or not.
+4. If next k nodes exists, then we are reversing these k nodes
+5. Else the remaining node (less than k) should not be reversed.
+
+
 - Time Complexity: O(N)
 - Space Complexity: O(1)
 
 ```java
+
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
-        if(head == null || k <= 0 || k == 1) {
-            return head;
-        }
+        ListNode newHead = null, rear = null;
         
+        ListNode temp = head;
+
+        while(temp != null) {
+            // check whether there exists next k nodes or not.
+            if(checkNextKNodes(temp, k)) {
+                // reverse k elements
+                ListNode[] reverse = reverseKNodes(temp, k);
+                
+                ListNode rev = reverse[0];  // head of linked list after reversing
+                temp = reverse[1];          // head of next part of original linkedlist
+                
+                if(newHead == null) {
+                    newHead = rear = rev;
+
+                    while(rear.next != null) {  // we are not adding one node. we are adding multiple nodes.
+                        rear = rear.next;       // go to the end of new list
+                    }
+                } else {
+                    rear.next = rev;
+                    while(rear.next != null) {  // we are not adding one node. we are adding multiple nodes.
+                        rear = rear.next;       // go to the end of new list
+                    }
+                }
+            } // remaining nodes are less than k. so no need to reverse these nodes 
+            else {
+                // check if new linkedlist is empty
+                if(newHead == null) {
+                    newHead = rear = temp;
+                } else {    // is the list is not empty, update the rear pointer.
+                    rear.next = temp;
+                    //rear = rear.next;  //this step is not required. we are not adding one node. we are adding many nodes.
+                }
+                // Else block will be executed only once at last iteration
+                // since we have already added the remaining elements to new list, we should mark temp as null
+                temp = null;    
+            }
+        }
+        return newHead;
+    }
+    
+    // simple counting function
+    private boolean checkNextKNodes(ListNode head, int k) {
         int count = 0;
-        ListNode dummy = new ListNode();
-        dummy.next = head;
-        ListNode tail = dummy;
-        ListNode ptr = head;
+        ListNode node = head;
         
-        while(ptr != null) {
-            count = 0;
-            ListNode currHead = ptr;
-            while(ptr != null && count != k) {
-                count++;
-                ptr = ptr.next;
-            }
-            if (count < k) {
-                tail.next = currHead;
-                break;
-            }
-            ptr = currHead;
-            ListNode n = null;
-            ListNode prev = null;
-            count = 0;
-            while(ptr != null && count != k) {
-                n = ptr.next;
-                ptr.next = prev;
-                prev = ptr;
-                ptr = n;
-                count++;
-            }
-            tail.next = prev;
-            tail = currHead;
-            tail.next = null;
+        while(node != null && count != k) {
+            count += 1;
+            node = node.next;
+        } 
+        
+        return count == k;
+    }
+    
+    // simple reversal function
+    private ListNode[] reverseKNodes(ListNode head, int k) {
+        int count = 0;
+        ListNode node = head, prev = null;
+        
+        while(node != null && count != k) {
+            ListNode nex = node.next;
+            node.next = prev;
+            
+            prev = node;
+            node = nex;
+            count++;    // this step is important
         }
         
-        return dummy.next;
+        return new ListNode[] {prev, node};
+    }
+    
+    private void print(ListNode head) {
+        ListNode node = head;
         
+        while(node != null) {
+            System.out.printf("%s ->", node.val);
+            node = node.next;
+        }
+        System.out.println("");
     }
 }
 ```
