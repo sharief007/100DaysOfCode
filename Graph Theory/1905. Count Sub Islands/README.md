@@ -53,3 +53,61 @@ class Solution {
 
 }
 ```
+
+### Approach - 2
+
+[youtube explanation](https://www.youtube.com/watch?v=o1rVOYwcRd0)
+
+- Time Complexity: O(N*M)
+- Space Complexity: O(N*M)
+
+```java
+class Solution {
+    public int countSubIslands(int[][] grid1, int[][] grid2) {
+        int n = grid2.length, m = grid2[0].length;
+        int count = 0;
+        
+        for(int i=0;i<n;i++) {
+            for(int j=0;j<m;j++) {
+                if(grid2[i][j] == 1) {
+                    boolean[] flag = new boolean[]{true};
+                    checkIsland(grid1, grid2, i, j, flag);
+                    if(flag[0]) count++;
+                }
+            }
+        }
+        return count;
+    }
+    
+    // we need to check if it exists in grid1 or not
+    private void checkIsland(int[][] grid1, int[][] grid2, int i, int j, boolean[] flag) {
+        // outOfbounds doesnt matter here
+        if(outOfBounds(grid2, i, j)) {
+            return;
+        }
+        // water cell
+        if(grid2[i][j] == 0) {
+            return ;
+        }
+        
+        if(grid2[i][j] == 1) {
+            // we have land in grid2 but we dont have land in grid1
+            if(grid1[i][j] == 0) {  // so this cannot be an subisland
+                flag[0] = false;
+                return;
+            }
+            // mark as visited
+            grid2[i][j] = 0;
+        }
+        
+        checkIsland(grid1, grid2, i-1, j, flag);
+        checkIsland(grid1, grid2, i+1, j, flag);
+        checkIsland(grid1, grid2, i, j-1, flag);
+        checkIsland(grid1, grid2, i, j+1, flag);
+    }
+    
+    private boolean outOfBounds(int[][] grid, int i, int j) {
+        return (i<0 || i>= grid.length || j<0 || j>=grid[i].length);
+    }
+}
+```
